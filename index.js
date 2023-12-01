@@ -21,7 +21,8 @@ class Player {
 class Team {
   constructor(name) {
     this.name = name;
-    this.players = [];
+    this.players =
+      []; /*this is the first array thst will hold all the players*/
   }
 
   addPlayer(player) {
@@ -70,6 +71,7 @@ class Menu {
   }
 
   showMainMenuOptions() {
+    /*the PROMPT shows us the options*/
     return prompt(`
         0) exit
         1) create new team
@@ -128,6 +130,13 @@ class Menu {
     }
   }
 
+  deleteTeam() {
+    let index = prompt("Enter the index of the team you wish to delete:");
+    if (index > -1 && index < this.teams.length) {
+      this.teams.splice(index, 1);
+    }
+  }
+
   createPlayer() {
     let name = prompt("Enter name for new player:");
     let position = prompt("Enter position for new player:");
@@ -137,6 +146,7 @@ class Menu {
     let index = prompt("Enter the index of the player you wish to delete:");
     if (index > -1 && index < this.selectedTeam.players.length) {
       this.selectedTeam.players.splice(index, 1);
+      /*splice is what deletes the player*/
     }
   }
 }
